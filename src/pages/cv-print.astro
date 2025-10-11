@@ -1,0 +1,271 @@
+---
+import { getCollection } from "astro:content";
+import experiencesData from "../data/experiences.json";
+import educationData from "../data/education.json";
+import certificatesData from "../data/certificates.json";
+
+export const prerender = false;
+
+// Load data from JSON files
+const experiences = experiencesData.sort((a, b) => 
+  new Date(b.startDate).getTime() - new Date(a.startDate).getTime()
+);
+const educationItems = educationData.sort((a, b) => 
+  new Date(b.startDate).getTime() - new Date(a.startDate).getTime()
+);
+const certificates = certificatesData.sort((a, b) => 
+  new Date(b.date).getTime() - new Date(a.date).getTime()
+);
+const projects = (await getCollection("projects")).filter(p => !p.data.draft);
+---
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Firdaus Nuur Rhamadhan - CV</title>
+  <style>
+    @page {
+      size: A4;
+      margin: 1.5cm;
+    }
+    
+    body {
+      font-family: 'Arial', sans-serif;
+      line-height: 1.6;
+      color: #333;
+      max-width: 210mm;
+      margin: 0 auto;
+      padding: 20px;
+      font-size: 11pt;
+    }
+    
+    h1 {
+      font-size: 24pt;
+      margin-bottom: 5px;
+      color: #1a1a1a;
+    }
+    
+    h2 {
+      font-size: 16pt;
+      border-bottom: 2px solid #333;
+      padding-bottom: 5px;
+      margin-top: 20px;
+      margin-bottom: 10px;
+      color: #1a1a1a;
+    }
+    
+    h3 {
+      font-size: 12pt;
+      margin-bottom: 5px;
+      color: #2a2a2a;
+    }
+    
+    .header {
+      text-align: center;
+      margin-bottom: 20px;
+    }
+    
+    .contact-info {
+      text-align: center;
+      font-size: 10pt;
+      margin-bottom: 15px;
+    }
+    
+    .summary {
+      margin-bottom: 20px;
+      text-align: justify;
+    }
+    
+    .section {
+      margin-bottom: 15px;
+    }
+    
+    .item {
+      margin-bottom: 12px;
+      page-break-inside: avoid;
+    }
+    
+    .item-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: baseline;
+    }
+    
+    .date {
+      font-size: 10pt;
+      color: #666;
+    }
+    
+    ul {
+      margin: 5px 0;
+      padding-left: 20px;
+    }
+    
+    li {
+      margin-bottom: 3px;
+    }
+    
+    .skills-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 10px;
+    }
+    
+    .tech-tags {
+      margin-top: 5px;
+      font-size: 9pt;
+      color: #555;
+    }
+    
+    .project-category {
+      font-size: 10pt;
+      color: #666;
+      margin: 3px 0;
+    }
+    
+    .project-summary {
+      font-style: italic;
+      color: #444;
+      margin: 5px 0;
+    }
+  </style>
+</head>
+<body>
+  <div class="header">
+    <h1>Firdaus Nuur Rhamadhan</h1>
+    <div class="contact-info">
+      Male | 23 | Bandung, Indonesia | +6285724354115<br>
+      firdausnuurr@gmail.com | linkedin.com/in/nuurrhama
+    </div>
+  </div>
+
+  <div class="section summary">
+    <h2>Summary</h2>
+    <p>
+      Tech-savvy IoT Engineer and Full-Stack Developer (Django & Python) with expertise in AI (Computer Vision). 
+      Skilled in hardware-software integration, cloud-based IoT, and scalable web applications. A proactive leader, 
+      former KARIMAH General Chairman, with strong problem-solving and teamwork abilities. Passionate about driving 
+      AI and IoT innovations to create real-world impact.
+    </p>
+  </div>
+
+  <div class="section">
+    <h2>Education</h2>
+    {educationItems.map((edu) => (
+      <div class="item">
+        <div class="item-header">
+          <h3>{edu.institution}</h3>
+          <span class="date">
+            {new Date(edu.startDate).getFullYear()}–{edu.endDate ? new Date(edu.endDate).getFullYear() : "Present"}
+          </span>
+        </div>
+        <p>{edu.program} | {edu.location}</p>
+      </div>
+    ))}
+  </div>
+
+  <div class="section">
+    <h2>Professional Experience</h2>
+    {experiences.map((exp) => (
+      <div class="item">
+        <div class="item-header">
+          <h3>{exp.title}</h3>
+          <span class="date">
+            {new Date(exp.startDate).toLocaleDateString('en-US', { month: 'short', year: 'numeric' })} – 
+            {exp.endDate ? new Date(exp.endDate).toLocaleDateString('en-US', { month: 'short', year: 'numeric' }) : 'Present'}
+          </span>
+        </div>
+        <p><strong>{exp.company}</strong> | {exp.location}</p>
+        <ul>
+          {exp.responsibilities.map((resp) => (
+            <li>{resp}</li>
+          ))}
+        </ul>
+      </div>
+    ))}
+  </div>
+
+  <div class="section">
+    <h2>Portfolio & Projects</h2>
+    {projects.map((project) => (
+      <div class="item">
+        <div class="item-header">
+          <h3>{project.data.title}</h3>
+          <span class="date">{project.data.date.toLocaleDateString('en-US', { month: 'short', year: 'numeric' })}</span>
+        </div>
+        <p class="project-category"><strong>Category:</strong> {project.data.category}</p>
+        <p class="project-summary">{project.data.summary}</p>
+        <ul>
+          {project.data.bullets.map((bullet) => (
+            <li>{bullet}</li>
+          ))}
+        </ul>
+        <div class="tech-tags">
+          <strong>Tech Stack:</strong>
+          {project.data.tech.map((tech, index) => (
+            <span>{tech}{index < project.data.tech.length - 1 ? ', ' : ''}</span>
+          ))}
+        </div>
+      </div>
+    ))}
+  </div>
+
+  <div class="section">
+    <h2>Organizational Experience</h2>
+    <div class="item">
+      <div class="item-header">
+        <h3>President, KARIMAH Al-Ittihad</h3>
+        <span class="date">Mar 2023 – Dec 2023</span>
+      </div>
+      <p>Bandung, Indonesia</p>
+      <p>Led and managed the organization, overseeing programs focused on Islamic studies, leadership development, and student engagement.</p>
+    </div>
+    <div class="item">
+      <div class="item-header">
+        <h3>Member, Forum Dienul Islam</h3>
+        <span class="date">2018 – 2021</span>
+      </div>
+      <p>Cimahi, Indonesia</p>
+      <p>Actively participated in religious discussions, leadership training, and community service initiatives.</p>
+    </div>
+  </div>
+
+  <div class="section">
+    <h2>Certificates</h2>
+    <ul>
+      {certificates.map((cert) => (
+        <li>
+          <strong>{cert.title}</strong> — {cert.organization} 
+          ({new Date(cert.date).toLocaleDateString('en-US', { month: 'short', year: 'numeric' })})
+        </li>
+      ))}
+    </ul>
+  </div>
+
+  <div class="section">
+    <h2>Skills</h2>
+    <div class="skills-grid">
+      <div>
+        <strong>IoT:</strong> ESP32, Arduino, hardware-software integration, cloud-based IoT
+      </div>
+      <div>
+        <strong>Full-Stack:</strong> Django, Python, REST APIs, SQL/NoSQL (PostgreSQL, MySQL, MongoDB)
+      </div>
+      <div>
+        <strong>AI/Computer Vision:</strong> Image recognition and analysis (YOLOv8)
+      </div>
+      <div>
+        <strong>Linux & Scripting:</strong> Linux daily driver, CLI, scripting, system management
+      </div>
+      <div>
+        <strong>Cloud:</strong> AWS, GCP, architecture & deployment
+      </div>
+      <div>
+        <strong>Other:</strong> Git/GitHub, PCB (KiCad), 3D Modeling (SketchUp), Data Visualization
+      </div>
+    </div>
+  </div>
+</body>
+</html>

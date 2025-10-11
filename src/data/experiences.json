@@ -1,0 +1,45 @@
+[
+  {
+    "title": "Internship - IoT Engineer & AR Integration",
+    "company": "BAPPEDA Jabar",
+    "location": "Bandung",
+    "startDate": "2024-10-01",
+    "endDate": "2024-10-31",
+    "responsibilities": [
+      "Find a problem and create a solution to one of the problems in the Bappeda office.",
+      "Develop an IoT-based temperature monitoring device.",
+      "Integrating IoT devices with Blynk and AR devices on Smartphones."
+    ],
+    "tags": ["IoT", "AR", "Blynk"]
+  },
+  {
+    "title": "Internship - Flutter Developer & IoT Engineer",
+    "company": "Makerindo",
+    "location": "Bandung",
+    "startDate": "2022-09-01",
+    "endDate": "2023-02-28",
+    "responsibilities": [
+      "Studied Flutter development and implemented UI for the TehIbu app.",
+      "Integrated the app with the backend system for seamless functionality.",
+      "Developed, tested, and installed various IoT solutions in field projects.",
+      "Worked on hardware-software integration for IoT devices.",
+      "Provide technical support to users for troubleshooting and system improvements.",
+      "Managed component procurement to support project needs."
+    ],
+    "tags": ["Flutter", "IoT", "Mobile Development"]
+  },
+  {
+    "title": "Internship - IoT Engineer",
+    "company": "PPTIK ITB",
+    "location": "Bandung",
+    "startDate": "2020-06-01",
+    "endDate": "2021-03-31",
+    "responsibilities": [
+      "Develop and refine IoT devices under the guidance of senior engineers.",
+      "Test and evaluate device functionality to meet industry standards.",
+      "Program IoT devices, including Arduino and ESP, for seamless operation.",
+      "Conduct IoT training sessions, sharing knowledge and best practices with learners."
+    ],
+    "tags": ["IoT", "Arduino", "ESP32", "Training"]
+  }
+]

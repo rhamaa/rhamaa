@@ -1,0 +1,24 @@
+[
+  {
+    "institution": "Universitas Kebangsaan Republik Indonesia",
+    "program": "Informatics Engineering (8th semester)",
+    "location": "Bandung",
+    "startDate": "2021-09-01",
+    "endDate": "",
+    "notes": [
+      "Currently in 8th semester of Informatics Engineering program.",
+      "Focus on IoT, AI, and Full-Stack Development."
+    ]
+  },
+  {
+    "institution": "SMKN 1 Cimahi",
+    "program": "Power Electronics and Telecommunications Engineering",
+    "location": "Cimahi",
+    "startDate": "2018-07-01",
+    "endDate": "2021-06-30",
+    "notes": [
+      "Vocational high school specializing in electronics and telecommunications.",
+      "Foundation in embedded systems and IoT hardware."
+    ]
+  }
+]

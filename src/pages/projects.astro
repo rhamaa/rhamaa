@@ -1,0 +1,121 @@
+---
+import Header from "../components/Header.astro";
+import ProjectCard from "../components/ProjectCard.astro";
+import { getCollection } from "astro:content";
+
+const allProjects = (await getCollection("projects"))
+  .filter(p => !p.data.draft)
+  .sort((a, b) => b.data.date.getTime() - a.data.date.getTime());
+
+const categories = ['All', 'IoT', 'Software', 'AI/ML', 'Cloud', 'Other'];
+---
+
+<!DOCTYPE html>
+<html lang="en">
+  <Header title="Projects | Firdaus Nuur Rhamadhan" />
+  <body class="bg-[#FFF8F0] text-gray-900">
+    <div class="max-w-6xl mx-auto px-6 py-12">
+      
+      <!-- Header -->
+      <div class="mb-12">
+        <a href="/" class="inline-flex items-center gap-2 mb-6 px-4 py-2 bg-white border-3 border-black hover:shadow-[4px_4px_0px_0px_rgba(0,0,0,1)] hover:-translate-y-1 transition-all">
+          <span class="text-xl">←</span>
+          <span class="font-bold">Back to Home</span>
+        </a>
+        
+        <h1 class="text-5xl font-bold mb-4">My Projects</h1>
+        <p class="text-xl text-gray-600">A collection of my work in IoT, Software Development, AI/ML, and Cloud</p>
+      </div>
+
+      <!-- Category Filter -->
+      <div class="mb-8">
+        <div class="flex flex-wrap gap-3" id="category-filter">
+          {categories.map((cat) => (
+            <button 
+              data-category={cat}
+              class="category-btn px-6 py-2 border-3 border-black font-bold transition-all hover:shadow-[4px_4px_0px_0px_rgba(0,0,0,1)] hover:-translate-y-1"
+              class:list={[
+                cat === 'All' ? 'bg-black text-white active' : 'bg-white text-black'
+              ]}
+            >
+              {cat}
+            </button>
+          ))}
+        </div>
+      </div>
+
+      <!-- Projects Grid -->
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6" id="projects-grid">
+        {allProjects.map((project) => (
+          <div data-category={project.data.category} class="project-item">
+            <ProjectCard 
+              title={project.data.title}
+              summary={project.data.summary}
+              category={project.data.category}
+              image={project.data.image}
+              tech={project.data.tech}
+              link={project.data.link}
+              github={project.data.github}
+              date={project.data.date}
+              slug={project.slug}
+            />
+          </div>
+        ))}
+      </div>
+
+      {allProjects.length === 0 && (
+        <div class="text-center py-16">
+          <p class="text-2xl text-gray-500">No projects yet. Check back soon!</p>
+        </div>
+      )}
+
+    </div>
+
+    <script>
+      const categoryButtons = document.querySelectorAll('.category-btn');
+      const projectItems = document.querySelectorAll('.project-item');
+
+      categoryButtons.forEach(button => {
+        button.addEventListener('click', () => {
+          const category = button.getAttribute('data-category');
+          
+          // Update active button
+          categoryButtons.forEach(btn => {
+            btn.classList.remove('bg-black', 'text-white', 'active');
+            btn.classList.add('bg-white', 'text-black');
+          });
+          button.classList.remove('bg-white', 'text-black');
+          button.classList.add('bg-black', 'text-white', 'active');
+
+          // Filter projects
+          projectItems.forEach(item => {
+            const itemCategory = item.getAttribute('data-category');
+            if (category === 'All' || itemCategory === category) {
+              item.style.display = 'block';
+              item.style.animation = 'fadeIn 0.5s ease-out';
+            } else {
+              item.style.display = 'none';
+            }
+          });
+        });
+      });
+    </script>
+
+    <style>
+      @keyframes fadeIn {
+        from {
+          opacity: 0;
+          transform: translateY(10px);
+        }
+        to {
+          opacity: 1;
+          transform: translateY(0);
+        }
+      }
+
+      .border-3 {
+        border-width: 3px;
+      }
+    </style>
+  </body>
+</html>

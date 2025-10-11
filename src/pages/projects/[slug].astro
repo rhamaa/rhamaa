@@ -1,0 +1,306 @@
+---
+import Header from "../../components/Header.astro";
+import { getCollection } from "astro:content";
+import type { CollectionEntry } from "astro:content";
+
+export async function getStaticPaths() {
+  const projects = await getCollection("projects");
+  return projects.map((project) => ({
+    params: { slug: project.slug },
+  }));
+}
+
+const { slug } = Astro.params;
+if (!slug) {
+  throw new Error("Missing slug parameter");
+}
+
+const projects = await getCollection("projects");
+const project = projects.find((entry) => entry.slug === slug) as CollectionEntry<"projects"> | undefined;
+
+if (!project) {
+  throw new Error(`Project not found for slug: ${slug}`);
+}
+
+const { Content } = await project.render();
+---
+
+<!DOCTYPE html>
+<html lang="en">
+  <Header title={`${project.data.title} | Projects`} />
+  <body class="bg-[#FFF8F0] text-gray-900">
+    <div class="max-w-4xl mx-auto px-6 py-12">
+      
+      <!-- Back Button -->
+      <a href="/projects" class="inline-flex items-center gap-2 mb-8 px-4 py-2 bg-white border-3 border-black hover:shadow-[4px_4px_0px_0px_rgba(0,0,0,1)] hover:-translate-y-1 transition-all">
+        <span class="text-xl">←</span>
+        <span class="font-bold">Back to Projects</span>
+      </a>
+
+      <!-- Project Header -->
+      <article class="bg-white border-3 border-black p-8 md:p-12 shadow-[8px_8px_0px_0px_rgba(0,0,0,1)]">
+        
+        {project.data.image && (
+          <div class="mb-8 -mx-8 md:-mx-12 -mt-8 md:-mt-12">
+            <img src={project.data.image} alt={project.data.title} class="w-full h-64 md:h-96 object-cover border-b-3 border-black" />
+          </div>
+        )}
+
+        <div class="mb-6">
+          <!-- Category Badge -->
+          <div class="flex items-center gap-3 mb-4">
+            <span class="px-4 py-2 bg-[#A8E6CF] border-2 border-black font-bold text-sm rounded-full">
+              {project.data.category}
+            </span>
+            <span class="text-gray-500 text-sm">
+              {project.data.date.toLocaleDateString('en-US', { month: 'long', year: 'numeric' })}
+            </span>
+          </div>
+          
+          <h1 class="text-4xl md:text-5xl font-bold mb-4">{project.data.title}</h1>
+          <p class="text-xl text-gray-600 mb-6">{project.data.summary}</p>
+
+          <!-- Tech Stack -->
+          {project.data.tech.length > 0 && (
+            <div class="mb-6">
+              <h3 class="text-sm font-bold text-gray-500 uppercase mb-2">Tech Stack</h3>
+              <div class="flex flex-wrap gap-2">
+                {project.data.tech.map((tech) => (
+                  <span class="px-3 py-1 bg-[#E8DFF5] border-2 border-black text-xs font-semibold rounded-full">
+                    {tech}
+                  </span>
+                ))}
+              </div>
+            </div>
+          )}
+
+          <!-- Key Highlights -->
+          {project.data.bullets.length > 0 && (
+            <div class="mb-6 p-4 bg-[#FFF8E1] border-2 border-black rounded-lg">
+              <h3 class="text-sm font-bold text-gray-700 uppercase mb-3">Key Highlights</h3>
+              <ul class="space-y-2">
+                {project.data.bullets.map((bullet) => (
+                  <li class="flex gap-2 text-sm">
+                    <span class="text-[#98c379] font-bold">✓</span>
+                    <span>{bullet}</span>
+                  </li>
+                ))}
+              </ul>
+            </div>
+          )}
+
+          <!-- Links -->
+          <div class="flex flex-wrap gap-3">
+            {project.data.link && (
+              <a 
+                href={project.data.link} 
+                target="_blank" 
+                rel="noopener noreferrer"
+                class="inline-flex items-center gap-2 px-4 py-2 bg-[#61afef] text-white border-2 border-black font-bold hover:shadow-[4px_4px_0px_0px_rgba(0,0,0,1)] hover:-translate-y-1 transition-all"
+              >
+                <span>🔗</span>
+                <span>Live Demo</span>
+              </a>
+            )}
+            {project.data.github && (
+              <a 
+                href={project.data.github} 
+                target="_blank" 
+                rel="noopener noreferrer"
+                class="inline-flex items-center gap-2 px-4 py-2 bg-black text-white border-2 border-black font-bold hover:shadow-[4px_4px_0px_0px_rgba(0,0,0,1)] hover:-translate-y-1 transition-all"
+              >
+                <span>📦</span>
+                <span>GitHub</span>
+              </a>
+            )}
+          </div>
+        </div>
+
+        <!-- Project Content -->
+        <div class="prose prose-lg max-w-none markdown-content">
+          <Content />
+        </div>
+      </article>
+
+    </div>
+
+    <style>
+      .border-3 {
+        border-width: 3px;
+      }
+
+      .markdown-content {
+        color: #1a1a1a;
+      }
+
+      .markdown-content h1,
+      .markdown-content h2,
+      .markdown-content h3,
+      .markdown-content h4 {
+        font-family: 'IBM Plex Sans', sans-serif;
+        font-weight: 700;
+        color: #111111;
+      }
+
+      .markdown-content h1 {
+        font-size: clamp(2.25rem, 4.5vw, 3rem);
+        margin-top: 3rem;
+        margin-bottom: 1.5rem;
+        border-bottom: 4px solid #000;
+        padding-bottom: 1rem;
+      }
+
+      .markdown-content h2 {
+        font-size: clamp(2rem, 4vw, 2.5rem);
+        margin-top: 2.5rem;
+        margin-bottom: 1.25rem;
+        border-bottom: 3px solid #000;
+        padding-bottom: 0.75rem;
+      }
+
+      .markdown-content h3 {
+        font-size: clamp(1.6rem, 3vw, 2rem);
+        margin-top: 2rem;
+        margin-bottom: 1rem;
+      }
+
+      .markdown-content h4 {
+        font-size: clamp(1.3rem, 2.5vw, 1.6rem);
+        margin-top: 1.75rem;
+        margin-bottom: 0.75rem;
+      }
+
+      .markdown-content p {
+        margin-bottom: 1.5rem;
+        line-height: 1.8;
+        color: #2c2c2c;
+      }
+
+      .markdown-content a {
+        color: #c678dd;
+        font-weight: 600;
+        text-decoration: underline;
+        text-decoration-thickness: 2px;
+        text-decoration-color: rgba(198, 120, 221, 0.4);
+        transition: color 0.2s ease, text-decoration-color 0.2s ease;
+      }
+
+      .markdown-content a:hover {
+        color: #a855f7;
+        text-decoration-color: #a855f7;
+      }
+
+      .markdown-content code {
+        background: #1f2229;
+        color: #98c379;
+        padding: 0.25rem 0.45rem;
+        border-radius: 0.35rem;
+        font-family: 'IBM Plex Mono', monospace;
+        font-size: 0.95em;
+        border: 2px solid #000;
+      }
+
+      .markdown-content pre {
+        background: #1f2229;
+        color: #e5eaf1;
+        border: 3px solid #000;
+        padding: 1.25rem;
+        margin: 2rem 0;
+        border-radius: 0.75rem;
+        box-shadow: 8px 8px 0px 0px rgba(0, 0, 0, 1);
+        overflow-x: auto;
+      }
+
+      .markdown-content pre code {
+        background: transparent;
+        color: inherit;
+        padding: 0;
+        border: none;
+      }
+
+      .markdown-content ul,
+      .markdown-content ol {
+        margin-left: 1.75rem;
+        margin-bottom: 1.5rem;
+        display: grid;
+        gap: 0.75rem;
+      }
+
+      .markdown-content ul li::marker {
+        color: #a855f7;
+        font-weight: 700;
+      }
+
+      .markdown-content ol li::marker {
+        color: #4c1d95;
+        font-weight: 700;
+      }
+
+      .markdown-content blockquote {
+        border-left: 4px solid #a855f7;
+        padding-left: 1.25rem;
+        margin: 2rem 0;
+        font-style: italic;
+        color: #4b5563;
+        background: rgba(168, 85, 247, 0.08);
+        padding: 1rem 1.25rem;
+        border-radius: 0.5rem;
+      }
+
+      .markdown-content img,
+      .markdown-content video {
+        border: 3px solid #000;
+        margin: 2rem 0;
+        border-radius: 1rem;
+        box-shadow: 8px 8px 0px 0px rgba(0, 0, 0, 1);
+      }
+
+      .markdown-content hr {
+        border: none;
+        border-top: 3px dashed #000;
+        margin: 2.5rem 0;
+      }
+
+      .markdown-content table {
+        width: 100%;
+        border-collapse: separate;
+        border-spacing: 0;
+        margin: 2rem 0;
+        background: #fff;
+        border: 3px solid #000;
+        border-radius: 0.75rem;
+        overflow: hidden;
+      }
+
+      .markdown-content th,
+      .markdown-content td {
+        padding: 1rem 1.25rem;
+        border-bottom: 2px solid #000;
+      }
+
+      .markdown-content th {
+        background: #111;
+        color: #fff;
+        text-align: left;
+        font-weight: 700;
+      }
+
+      .markdown-content tbody tr:nth-child(even) {
+        background: rgba(0, 0, 0, 0.04);
+      }
+
+      .markdown-content tbody tr:last-child td {
+        border-bottom: none;
+      }
+
+      .markdown-content strong {
+        color: #000;
+        font-weight: 700;
+      }
+
+      .markdown-content em {
+        color: #4c1d95;
+      }
+    </style>
+  </body>
+</html>

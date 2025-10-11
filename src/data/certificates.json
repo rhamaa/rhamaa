@@ -1,0 +1,86 @@
+[
+  {
+    "title": "Seeds for the Futures 2024 Certificate of Completion",
+    "organization": "Huawei",
+    "date": "2024-09-01",
+    "link": "",
+    "tags": ["AI", "Cloud", "5G", "Leadership"]
+  },
+  {
+    "title": "Mabit Karimah Presenter Certificate",
+    "organization": "Karimah Al-Ittihad",
+    "date": "2023-10-01",
+    "link": "",
+    "tags": ["Presenter", "Leadership"]
+  },
+  {
+    "title": "HMIF IT - Learn 2023 Presenter Certificate",
+    "organization": "HMIF",
+    "date": "2023-10-01",
+    "link": "",
+    "tags": ["IoT", "Presenter"]
+  },
+  {
+    "title": "Using Python to Interact with the Operating System",
+    "organization": "Coursera",
+    "date": "2023-09-01",
+    "link": "",
+    "tags": ["Python", "Automation"]
+  },
+  {
+    "title": "Crash Course on Python",
+    "organization": "Coursera",
+    "date": "2023-08-01",
+    "link": "",
+    "tags": ["Python"]
+  },
+  {
+    "title": "INTERDISCIPLINARY DESIGN VIRTUAL COURSE (IDVC)",
+    "organization": "Tanoto Foundation",
+    "date": "2022-11-01",
+    "link": "",
+    "tags": ["Design Thinking", "Innovation"]
+  },
+  {
+    "title": "Building Flutter Apps for Beginners",
+    "organization": "Dicoding",
+    "date": "2022-07-01",
+    "link": "",
+    "tags": ["Flutter", "Mobile Development"]
+  },
+  {
+    "title": "Introduction to Dart Programming",
+    "organization": "Dicoding",
+    "date": "2022-06-01",
+    "link": "",
+    "tags": ["Dart", "Programming"]
+  },
+  {
+    "title": "Basic Data Visualization",
+    "organization": "Dicoding",
+    "date": "2022-06-01",
+    "link": "",
+    "tags": ["Data Visualization"]
+  },
+  {
+    "title": "Architecting on AWS",
+    "organization": "Dicoding",
+    "date": "2022-03-01",
+    "link": "",
+    "tags": ["AWS", "Cloud Architecture"]
+  },
+  {
+    "title": "Impact Innovation Incubator",
+    "organization": "Social Innovation Hub Indonesia",
+    "date": "2022-02-01",
+    "link": "",
+    "tags": ["Innovation", "Social Impact"]
+  },
+  {
+    "title": "Cloud Practitioner Essentials",
+    "organization": "Dicoding",
+    "date": "2021-12-01",
+    "link": "",
+    "tags": ["AWS", "Cloud Computing"]
+  }
+]

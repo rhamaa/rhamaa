@@ -1,0 +1,150 @@
+{
+  "$schema": "https://frontmatter.codes/frontmatter.schema.json",
+  "frontMatter.framework.id": "astro",
+  "frontMatter.preview.host": "http://localhost:4321",
+  "frontMatter.preview.trailingSlash": false,
+  "frontMatter.content.publicFolder": "[[workspace]]/public",
+  "frontMatter.content.pageFolders": [
+    {
+      "title": "Projects",
+      "path": "[[workspace]]/src/content/projects",
+      "contentTypes": ["projects"]
+    },
+    {
+      "title": "Posts",
+      "path": "[[workspace]]/src/content/posts",
+      "contentTypes": ["posts"]
+    }
+  ],
+  "frontMatter.data.types": [
+    {
+      "id": "experience",
+      "schema": {
+        "title": "Experience",
+        "type": "object",
+        "required": ["title", "company", "startDate"],
+        "properties": {
+          "title": { "type": "string", "title": "Title" },
+          "company": { "type": "string", "title": "Company" },
+          "location": { "type": "string", "title": "Location" },
+          "startDate": { "type": "string", "title": "Start Date" },
+          "endDate": { "type": "string", "title": "End Date" },
+          "responsibilities": {
+            "type": "array",
+            "title": "Responsibilities",
+            "items": { "type": "string" }
+          },
+          "tags": {
+            "type": "array",
+            "title": "Tags",
+            "items": { "type": "string" }
+          }
+        }
+      }
+    },
+    {
+      "id": "education",
+      "schema": {
+        "title": "Education",
+        "type": "object",
+        "required": ["institution", "program", "startDate"],
+        "properties": {
+          "institution": { "type": "string", "title": "Institution" },
+          "program": { "type": "string", "title": "Program" },
+          "location": { "type": "string", "title": "Location" },
+          "startDate": { "type": "string", "title": "Start Date" },
+          "endDate": { "type": "string", "title": "End Date" },
+          "notes": {
+            "type": "array",
+            "title": "Notes",
+            "items": { "type": "string" }
+          }
+        }
+      }
+    },
+    {
+      "id": "certificate",
+      "schema": {
+        "title": "Certificate",
+        "type": "object",
+        "required": ["title", "organization", "date"],
+        "properties": {
+          "title": { "type": "string", "title": "Title" },
+          "organization": { "type": "string", "title": "Organization" },
+          "date": { "type": "string", "title": "Date" },
+          "link": { "type": "string", "title": "Link" },
+          "tags": {
+            "type": "array",
+            "title": "Tags",
+            "items": { "type": "string" }
+          }
+        }
+      }
+    }
+  ],
+  "frontMatter.data.files": [
+    {
+      "id": "experiences",
+      "title": "Experiences",
+      "file": "[[workspace]]/src/data/experiences.json",
+      "labelField": "title",
+      "fileType": "json",
+      "singleEntry": false,
+      "type": "experience"
+    },
+    {
+      "id": "education",
+      "title": "Education",
+      "file": "[[workspace]]/src/data/education.json",
+      "labelField": "program",
+      "fileType": "json",
+      "singleEntry": false,
+      "type": "education"
+    },
+    {
+      "id": "certificates",
+      "title": "Certificates",
+      "file": "[[workspace]]/src/data/certificates.json",
+      "labelField": "title",
+      "fileType": "json",
+      "singleEntry": false,
+      "type": "certificate"
+    }
+  ],
+  "frontMatter.taxonomy.contentTypes": [
+    {
+      "name": "projects",
+      "pageBundle": false,
+      "clearEmpty": true,
+      "fields": [
+        { "title": "Title", "name": "title", "type": "string", "single": true },
+        { "title": "Summary", "name": "summary", "type": "string" },
+        { "title": "Category", "name": "category", "type": "categories" },
+        { "title": "Image", "name": "image", "type": "image" },
+        { "title": "Tech Stack", "name": "tech", "type": "tags" },
+        { "title": "Highlights", "name": "bullets", "type": "list" },
+        { "title": "Live Link", "name": "link", "type": "string" },
+        { "title": "GitHub", "name": "github", "type": "string" },
+        { "title": "Date", "name": "date", "type": "datetime", "isPublishDate": true },
+        { "title": "Draft", "name": "draft", "type": "boolean", "default": false }
+      ]
+    },
+    {
+      "name": "posts",
+      "pageBundle": false,
+      "previewPath": "/blog",
+      "clearEmpty": true,
+      "fields": [
+        { "title": "Title", "name": "title", "type": "string", "single": true },
+        { "title": "Description", "name": "description", "type": "string" },
+        { "title": "Publishing date", "name": "date", "type": "datetime", "default": "{{now}}", "isPublishDate": true },
+        { "title": "Author", "name": "author", "type": "string", "default": "Firdaus Nuur Rhamadhan" },
+        { "title": "Cover image", "name": "image", "type": "image", "isPreviewImage": true },
+        { "title": "Tags", "name": "tags", "type": "tags" },
+        { "title": "Category", "name": "category", "type": "categories" },
+        { "title": "Draft", "name": "draft", "type": "boolean", "default": false }
+      ]
+    }
+  ],
+  "frontMatter.git.enabled": true
+}
