@@ -58,14 +58,16 @@ const { Content } = await post.render();
           )}
           
           <h1 class="text-4xl md:text-5xl font-bold mb-4">{post.data.title}</h1>
-          
+
           <div class="flex items-center gap-4 text-gray-600">
             <span>•</span>
             <span>{post.data.author}</span>
           </div>
         </div>
 
-        <div class="prose prose-lg max-w-none markdown-content">
+        <div
+          class="prose prose-lg max-w-none prose-headings:font-sans prose-headings:font-bold prose-headings:text-gray-900 prose-h2:border-b-4 prose-h2:border-black prose-h2:pb-4 prose-h2:mt-12 prose-h2:mb-6 prose-h3:mt-10 prose-h3:mb-4 prose-h4:mt-8 prose-h4:mb-3 prose-a:text-purple-600 hover:prose-a:text-purple-700 prose-a:no-underline hover:prose-a:underline prose-strong:text-black prose-code:bg-atom-bg prose-code:text-atom-green prose-code:px-2 prose-code:py-0.5 prose-code:rounded prose-code:border-2 prose-code:border-black prose-pre:bg-atom-bg prose-pre:text-atom-fg prose-pre:border-4 prose-pre:border-black prose-pre:rounded-xl prose-pre:shadow-[8px_8px_0px_0px_rgba(0,0,0,1)] prose-pre:px-5 prose-pre:py-6 prose-ul:marker:text-purple-600 prose-ol:marker:text-purple-900 prose-li:my-2 prose-blockquote:border-l-4 prose-blockquote:border-purple-500 prose-blockquote:bg-purple-100/30 prose-blockquote:rounded-lg prose-blockquote:py-4 prose-blockquote:px-6 prose-img:border-4 prose-img:border-black prose-img:rounded-2xl prose-img:shadow-[8px_8px_0px_0px_rgba(0,0,0,1)] prose-hr:border-black prose-hr:border-t-4 prose-hr:border-dashed prose-table:border-4 prose-table:border-black prose-th:bg-black prose-th:text-white prose-th:font-bold prose-td:border-b-2 prose-td:border-black"
+        >
           <Content />
         </div>
       </article>
@@ -76,161 +78,4 @@ const { Content } = await post.render();
       .border-3 {
         border-width: 3px;
       }
-
-      .markdown-content {
-        color: #1a1a1a;
-      }
-
-      .markdown-content h2,
-      .markdown-content h3,
-      .markdown-content h4 {
-        font-family: 'IBM Plex Sans', sans-serif;
-        font-weight: 700;
-        color: #111111;
-      }
-
-      .markdown-content h2 {
-        font-size: clamp(2rem, 4vw, 2.5rem);
-        margin-top: 2.5rem;
-        margin-bottom: 1.25rem;
-        border-bottom: 3px solid #000;
-        padding-bottom: 0.75rem;
-      }
-
-      .markdown-content h3 {
-        font-size: clamp(1.6rem, 3vw, 2rem);
-        margin-top: 2rem;
-        margin-bottom: 1rem;
-      }
-
-      .markdown-content h4 {
-        font-size: clamp(1.3rem, 2.5vw, 1.6rem);
-        margin-top: 1.75rem;
-        margin-bottom: 0.75rem;
-      }
-
-      .markdown-content p {
-        margin-bottom: 1.5rem;
-        line-height: 1.8;
-        color: #2c2c2c;
-      }
-
-      .markdown-content a {
-        color: #c678dd;
-        font-weight: 600;
-        text-decoration: underline;
-        text-decoration-thickness: 2px;
-        text-decoration-color: rgba(198, 120, 221, 0.4);
-        transition: color 0.2s ease, text-decoration-color 0.2s ease;
-      }
-
-      .markdown-content a:hover {
-        color: #a855f7;
-        text-decoration-color: #a855f7;
-      }
-
-      .markdown-content code {
-        background: #1f2229;
-        color: #98c379;
-        padding: 0.25rem 0.45rem;
-        border-radius: 0.35rem;
-        font-family: 'IBM Plex Mono', monospace;
-        font-size: 0.95em;
-        border: 2px solid #000;
-      }
-
-      .markdown-content pre {
-        background: #1f2229;
-        color: #e5eaf1;
-        border: 3px solid #000;
-        padding: 1.25rem;
-        margin: 2rem 0;
-        border-radius: 0.75rem;
-        box-shadow: 8px 8px 0px 0px rgba(0, 0, 0, 1);
-        overflow-x: auto;
-      }
-
-      .markdown-content pre code {
-        background: transparent;
-        color: inherit;
-        padding: 0;
-        border: none;
-      }
-
-      .markdown-content ul,
-      .markdown-content ol {
-        margin-left: 1.75rem;
-        margin-bottom: 1.5rem;
-        display: grid;
-        gap: 0.75rem;
-      }
-
-      .markdown-content ul li::marker {
-        color: #a855f7;
-        font-weight: 700;
-      }
-
-      .markdown-content ol li::marker {
-        color: #4c1d95;
-        font-weight: 700;
-      }
-
-      .markdown-content blockquote {
-        border-left: 4px solid #a855f7;
-        padding-left: 1.25rem;
-        margin: 2rem 0;
-        font-style: italic;
-        color: #4b5563;
-        background: rgba(168, 85, 247, 0.08);
-        border-radius: 0.5rem;
-      }
-
-      .markdown-content img,
-      .markdown-content video {
-        border: 3px solid #000;
-        margin: 2rem 0;
-        border-radius: 1rem;
-        box-shadow: 8px 8px 0px 0px rgba(0, 0, 0, 1);
-      }
-
-      .markdown-content hr {
-        border: none;
-        border-top: 3px dashed #000;
-        margin: 2.5rem 0;
-      }
-
-      .markdown-content table {
-        width: 100%;
-        border-collapse: separate;
-        border-spacing: 0;
-        margin: 2rem 0;
-        background: #fff;
-        border: 3px solid #000;
-        border-radius: 0.75rem;
-        overflow: hidden;
-      }
-
-      .markdown-content th,
-      .markdown-content td {
-        padding: 1rem 1.25rem;
-        border-bottom: 2px solid #000;
-      }
-
-      .markdown-content th {
-        background: #111;
-        color: #fff;
-        text-align: left;
-        font-weight: 700;
-      }
-
-      .markdown-content tbody tr:nth-child(even) {
-        background: rgba(0, 0, 0, 0.04);
-      }
-
-      .markdown-content strong {
-        color: #000;
-      }
-
-      .markdown-content em {
-        color: #4c1d95;
-      }
+    </style>
