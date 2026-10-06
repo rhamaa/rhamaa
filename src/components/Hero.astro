@@ -11,15 +11,15 @@ const { profile, linkedin } = Astro.props;
   <div class="container hero__inner">
     <div class="hero__copy">
       <h1 id="hero-title">{profile.name.split(' ').slice(0, 2).join(' ')}<br />{profile.name.split(' ').slice(2).join(' ')}</h1>
-      <p class="hero__headline" aria-label={profile.headline}>Membangun solusi teknologi<br />dari perangkat hingga aplikasi</p>
+      <p class="hero__headline" aria-label={profile.headline}>Building technology<br />from devices to applications</p>
       <div class="hero__actions">
-        <a class="button button--primary" href="#projects">Lihat proyek <Icon name="arrow" /></a>
-        <a class="button button--quiet" href={linkedin} target="_blank" rel="noreferrer" aria-label="Buka profil LinkedIn Firdaus Nuur Rhamadhan">LinkedIn <Icon name="external" /></a>
+        <a class="button button--primary" href="#projects">Explore projects <Icon name="arrow" /></a>
+        <a class="button button--quiet" href={linkedin} target="_blank" rel="noreferrer" aria-label="Open Firdaus Nuur Rhamadhan's LinkedIn profile">LinkedIn <Icon name="external" /></a>
       </div>
       <p class="sr-only">{profile.role}. {profile.intro} {profile.location}.</p>
     </div>
     <ReferenceArt kind="hero" class="hero__art" />
-    <img class="hero__tablet-art" src="/art/technology-standalone.webp" width="1536" height="1024" alt="Ilustrasi laptop, mikrokontroler, dan sensor yang saling terhubung" />
+    <img class="hero__tablet-art" src="/art/technology-standalone.webp" width="1536" height="1024" alt="Illustration of a laptop connected to a microcontroller and sensors" />
     <ReferenceArt kind="mobile" class="hero__mobile-art" />
     <ReferenceArt kind="mobile-orbit" class="hero__mobile-orbit" />
   </div>

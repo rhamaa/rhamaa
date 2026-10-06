@@ -12,17 +12,17 @@ const showStatus = project.id === 'captr-studio' || project.id === 'kirei-solar'
     <div class="project-card__number">0{index}<span></span></div>
     <div class="project-card__title-row"><h3>{project.title}</h3>{showStatus && <span class="project-status">{project.status}</span>}</div>
     <p class="project-card__summary">{project.summary}</p>
-    <ul class="tag-list" aria-label={`Bidang ${project.title}`}>{project.tags.map((tag) => <li>{tag}</li>)}</ul>
-    <button class="text-link" type="button" data-project-open={project.id} aria-haspopup="dialog">Lihat detail <Icon name="arrow" /></button>
+    <ul class="tag-list" aria-label={`Topics for ${project.title}`}>{project.tags.map((tag) => <li>{tag}</li>)}</ul>
+    <button class="text-link" type="button" data-project-open={project.id} aria-haspopup="dialog">View details <Icon name="arrow" /></button>
   </div>
   <div class="project-card__art"><ReferenceArt kind={artKind} /></div>
 </article>
 <dialog class="project-dialog" id={`detail-${project.id}`} aria-labelledby={`detail-title-${project.id}`}>
-  <form method="dialog"><button class="dialog-close" aria-label="Tutup detail proyek"><Icon name="close" /></button></form>
-  <p class="eyebrow">PROYEK 0{index}{project.year && ` · ${project.year}`}</p>
+  <form method="dialog"><button class="dialog-close" aria-label="Close project details"><Icon name="close" /></button></form>
+  <p class="eyebrow">PROJECT 0{index}{project.year && ` · ${project.year}`}</p>
   <h2 id={`detail-title-${project.id}`}>{project.title}</h2><span class="project-status">{project.status}</span>
   <p>{project.summary}</p><ul class="tag-list">{project.tags.map((tag) => <li>{tag}</li>)}</ul>
-  {project.repositoryUrl && <a class="button button--primary" href={project.repositoryUrl} target="_blank" rel="noreferrer">Lihat repositori <Icon name="external" /></a>}
+  {project.repositoryUrl && <a class="button button--primary" href={project.repositoryUrl} target="_blank" rel="noreferrer">View repository <Icon name="external" /></a>}
 </dialog>
 <script>
   document.querySelectorAll<HTMLButtonElement>('[data-project-open]').forEach((button) => {

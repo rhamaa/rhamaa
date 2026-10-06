@@ -31,11 +31,18 @@ test('static_page_has_primary_navigation_targets', async () => {
   }
 });
 
+test('static_page_declares_English_as_the_default_language', async () => {
+  const html = await readPage();
+
+  assert.match(html, /<html lang="en">/);
+  assert.match(html, /property="og:locale" content="en_US"/);
+});
+
 test('static_page_keeps_project_statuses_visible', async () => {
   const html = await readPage();
 
-  assert.match(html, /Dalam pengembangan/);
-  assert.match(html, /Prototipe R&amp;D|Prototipe R&D/);
+  assert.match(html, /In development/);
+  assert.match(html, /R&amp;D prototype|R&D prototype/);
 });
 
 test('static_page_omits_unconfirmed_role_and_education_dates', async () => {
@@ -55,7 +62,7 @@ test('hero_displays_professional_position_and_message', async () => {
   const html = await readPage();
 
   assert.ok(html.includes('Full-stack engineer'), 'the professional position should be visible');
-  assert.ok(html.includes('Membangun solusi teknologi dari perangkat hingga aplikasi'));
+  assert.ok(html.includes('Building technology from devices to applications'));
 });
 
 test('static_page_respects_keyboard_entry_and_reduced_motion', async () => {

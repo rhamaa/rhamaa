@@ -19,5 +19,5 @@ test('experience descriptions remain available through native keyboard-accessibl
   const html = await readPage();
   assert.equal((html.match(/<details class="experience-item"/g) || []).length, 4);
   assert.match(html, /<summary[\s\S]*?Kirei/);
-  assert.match(html, /Membuat perangkat pemantau suhu/);
+  assert.match(html, /Built an IoT temperature-monitoring device/);
 });

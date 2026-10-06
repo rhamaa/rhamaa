@@ -2,65 +2,65 @@
   "profile": {
     "name": "Firdaus Nuur Rhamadhan",
     "alias": "Rhamaa",
-    "headline": "Membangun solusi teknologi dari perangkat hingga aplikasi",
+    "headline": "Building technology from devices to applications",
     "role": "Full-stack engineer · IoT · AI",
-    "intro": "Saya menghubungkan perangkat, data, dan aplikasi—dari eksperimen embedded hingga produk software yang berguna.",
+    "intro": "I connect devices, data, and applications—from embedded experiments to useful software products.",
     "location": "Bandung, Indonesia"
   },
   "skills": [
     {
-      "title": "IoT & sistem tertanam",
-      "summary": "Menyatukan mikrokontroler, sensor, perangkat, dan aplikasi."
+      "title": "IoT & embedded systems",
+      "summary": "Bringing microcontrollers, sensors, devices, and applications together."
     },
     {
       "title": "Web & software",
-      "summary": "Merancang aplikasi full-stack dan pengalaman produk yang mudah digunakan."
+      "summary": "Building full-stack applications and easy-to-use product experiences."
     },
     {
       "title": "AI & computer vision",
-      "summary": "Mengeksplorasi RAG/LLM dan visi komputer lewat prototipe."
+      "summary": "Exploring RAG/LLM and computer vision through prototypes."
     }
   ],
   "experience": [
     {
       "company": "Kirei",
       "role": "IoT Engineer",
-      "summary": "Mengembangkan solusi di ranah IoT."
+      "summary": "Developing solutions in the IoT space."
     },
     {
       "company": "BAPPEDA Jabar",
-      "role": "Pemagang IoT Engineer & Integrasi AR",
-      "period": "Oktober 2024",
-      "summary": "Membuat perangkat pemantau suhu berbasis IoT dan menghubungkannya dengan Blynk serta AR di ponsel."
+      "role": "IoT Engineering & AR Integration Intern",
+      "period": "October 2024",
+      "summary": "Built an IoT temperature-monitoring device and connected it to Blynk and mobile AR."
     },
     {
       "company": "Makerindo",
-      "role": "Pemagang Flutter Developer & IoT Engineer",
-      "period": "September 2022–Februari 2023",
-      "summary": "Mengerjakan antarmuka Flutter, integrasi backend, dan perangkat IoT untuk proyek lapangan."
+      "role": "Flutter Developer & IoT Engineering Intern",
+      "period": "September 2022–February 2023",
+      "summary": "Worked on Flutter interfaces, backend integrations, and IoT devices for field projects."
     },
     {
       "company": "PPTIK ITB",
-      "role": "Pemagang IoT Engineer",
-      "period": "Juni 2020–Maret 2021",
-      "summary": "Memprogram dan menguji perangkat Arduino dan ESP, serta membantu kegiatan pelatihan IoT."
+      "role": "IoT Engineering Intern",
+      "period": "June 2020–March 2021",
+      "summary": "Programmed and tested Arduino and ESP devices and supported IoT training sessions."
     }
   ],
   "education": [
     {
       "institution": "Universitas Kebangsaan Republik Indonesia",
-      "program": "Teknik Informatika",
-      "displayProgram": "Teknik Informatika",
+      "program": "Informatics",
+      "displayProgram": "Informatics",
       "displayInstitution": "UKRI",
-      "summary": "Fokus pembelajaran pada IoT, AI, dan pengembangan full-stack."
+      "summary": "Focused on IoT, AI, and full-stack development."
     },
     {
       "institution": "SMKN 1 Cimahi",
-      "program": "Teknik Elektronika Daya dan Komunikasi",
+      "program": "Power and Communications Electronics",
       "displayProgram": "Elektronika",
       "displayInstitution": "SMKN 1 Cimahi",
       "period": "2018–2021",
-      "summary": "Fondasi elektronika dan sistem tertanam."
+      "summary": "Built a foundation in electronics and embedded systems."
     }
   ],
   "projects": [
@@ -68,8 +68,8 @@
       "id": "captr-studio",
       "title": "Captr Studio",
       "year": 2026,
-      "status": "Dalam pengembangan",
-      "summary": "Aplikasi desktop untuk merekam layar dan menyunting video, yang masih terus dikembangkan.",
+      "status": "In development",
+      "summary": "A desktop application for screen recording and video editing, currently in development.",
       "tags": ["Desktop", "Screen recording", "Video"],
       "repositoryUrl": "https://github.com/rhamaa/Captr-Studio",
       "featured": true
@@ -78,9 +78,9 @@
       "id": "inara-ai",
       "title": "iNara-AI",
       "year": "2024–2025",
-      "status": "Prototipe awal",
-      "summary": "Eksperimen asisten informasi kampus berbasis RAG/LLM yang menjelajahi pengetahuan lokal.",
-      "tags": ["AI", "RAG/LLM", "Asisten informasi"],
+      "status": "Early prototype",
+      "summary": "An experimental RAG/LLM campus information assistant exploring locally grounded knowledge.",
+      "tags": ["AI", "RAG/LLM", "Information assistant"],
       "repositoryUrl": "https://github.com/rhamaa/iNara-AI",
       "featured": true
     },
@@ -88,19 +88,19 @@
       "id": "runutin",
       "title": "Runutin",
       "year": null,
-      "status": "Inisiatif produk",
-      "summary": "Inisiatif edukasi teknologi modular yang menghubungkan aktivitas belajar dengan eksplorasi IoT.",
-      "tags": ["Edukasi", "IoT", "Modular"],
+      "status": "Product initiative",
+      "summary": "A modular technology-learning initiative connecting learning activities with hands-on IoT exploration.",
+      "tags": ["Education", "IoT", "Modular"],
       "repositoryUrl": null,
       "featured": true
     },
     {
       "id": "kirei-solar",
-      "title": "Sistem Pemantauan Panel Surya Kirei",
+      "title": "Kirei Solar Panel Monitoring System",
       "year": 2026,
-      "status": "Prototipe R&D",
-      "summary": "Prototipe pemantauan panel surya untuk eksplorasi sistem energi; telemetri firmware saat ini menggunakan data simulasi.",
-      "tags": ["IoT", "Monitoring", "Energi"],
+      "status": "R&D prototype",
+      "summary": "A solar-panel monitoring prototype for exploring energy systems; firmware telemetry currently uses simulated data.",
+      "tags": ["IoT", "Monitoring", "Energy"],
       "repositoryUrl": "https://github.com/rhamaa/Kirei-SolarPanelMonitoringSystem",
       "featured": true
     },
@@ -108,8 +108,8 @@
       "id": "bitanic-v2",
       "title": "Bitanic V2",
       "year": 2023,
-      "status": "Proyek publik",
-      "summary": "Eksplorasi integrasi perangkat IoT dalam proyek Makerindo.",
+      "status": "Public project",
+      "summary": "An exploration of IoT device integration for a Makerindo project.",
       "tags": ["IoT", "Embedded"],
       "repositoryUrl": "https://github.com/rhamaa/BitanicV2-Makerindo",
       "featured": false
@@ -118,18 +118,18 @@
       "id": "esp32cam-smartcar",
       "title": "ESP32Cam SmartCar",
       "year": 2023,
-      "status": "Proyek publik",
-      "summary": "Eksperimen kendaraan pintar dengan kamera berbasis ESP32-CAM.",
+      "status": "Public project",
+      "summary": "An ESP32-CAM experiment in camera-enabled smart vehicles.",
       "tags": ["ESP32-CAM", "Embedded"],
       "repositoryUrl": "https://github.com/rhamaa/ESP32Cam-SmartCar",
       "featured": false
     },
     {
       "id": "water-quality",
-      "title": "Monitoring Kualitas Air UKRI",
+      "title": "UKRI Water Quality Monitoring",
       "year": 2024,
-      "status": "Proyek publik",
-      "summary": "Proyek pemantauan kualitas air berbasis sensor dan IoT.",
+      "status": "Public project",
+      "summary": "A sensor-based water quality monitoring project using IoT.",
       "tags": ["IoT", "Sensor", "Monitoring"],
       "repositoryUrl": "https://github.com/rhamaa/IoT_UKRI_MonitoringKualitasAir",
       "featured": false
@@ -138,8 +138,8 @@
       "id": "computer-vision-measurement",
       "title": "Computer Vision Measurement",
       "year": 2024,
-      "status": "Proyek publik",
-      "summary": "Eksperimen OpenCV untuk memperkirakan volume bola dari citra.",
+      "status": "Public project",
+      "summary": "An OpenCV experiment to estimate a ball's volume from an image.",
       "tags": ["OpenCV", "Computer Vision"],
       "repositoryUrl": "https://github.com/rhamaa/ComputerVisionMeasurment",
       "featured": false
@@ -148,9 +148,9 @@
       "id": "telegram-restaurant-bell",
       "title": "Telegram Restaurant Bell",
       "year": 2026,
-      "status": "Proyek publik",
-      "summary": "Proyek bel restoran yang meneruskan pemberitahuan melalui Telegram.",
-      "tags": ["Telegram", "Otomasi"],
+      "status": "Public project",
+      "summary": "A restaurant service bell that forwards notifications through Telegram.",
+      "tags": ["Telegram", "Automation"],
       "repositoryUrl": "https://github.com/rhamaa/Telegram-Restaurant-Bell",
       "featured": false
     }
@@ -159,19 +159,19 @@
     {
       "period": "2023",
       "title": "Embedded & IoT",
-      "summary": "Integrasi mikrokontroler, perangkat, dan aplikasi menjadi fondasi karya.",
+      "summary": "Microcontroller, device, and application integration became the foundation for my work.",
       "projectIds": ["bitanic-v2", "esp32cam-smartcar"]
     },
     {
       "period": "2024–2025",
-      "title": "Sensor, computer vision & AI",
-      "summary": "Eksplorasi sensor kualitas air, visi komputer, dan prototipe asisten informasi kampus.",
+      "title": "Sensors, computer vision & AI",
+      "summary": "Exploring water-quality sensors, computer vision, and a campus information assistant prototype.",
       "projectIds": ["water-quality", "computer-vision-measurement", "inara-ai"]
     },
     {
       "period": "2026",
-      "title": "Monitoring & produk software",
-      "summary": "Fokus pada pemantauan energi, aplikasi desktop, dan otomasi berbasis Telegram.",
+      "title": "Monitoring & software products",
+      "summary": "Focusing on energy monitoring, desktop software, and Telegram-based automation.",
       "projectIds": ["kirei-solar", "captr-studio", "telegram-restaurant-bell"]
     }
   ],

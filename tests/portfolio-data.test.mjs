@@ -31,13 +31,13 @@ test('project_links_are_verified_https_urls', async () => {
   }
 });
 
-test('prototype_labels_remain_visible', async () => {
+test('project_status_labels_remain_visible', async () => {
   const portfolio = await loadPortfolio();
   const captr = portfolio.projects.find((project) => project.id === 'captr-studio');
   const kirei = portfolio.projects.find((project) => project.id === 'kirei-solar');
 
-  assert.equal(captr?.status, 'Dalam pengembangan');
-  assert.equal(kirei?.status, 'Prototipe R&D');
+  assert.equal(captr?.status, 'In development');
+  assert.equal(kirei?.status, 'R&D prototype');
 });
 
 test('unconfirmed_role_and_education_dates_are_omitted', async () => {

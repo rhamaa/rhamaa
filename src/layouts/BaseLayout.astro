@@ -8,12 +8,12 @@ interface Props {
 
 const {
   title = 'Firdaus Nuur Rhamadhan — Rhamaa',
-  description = 'Portofolio Firdaus Nuur Rhamadhan.',
+  description = 'Portfolio of Firdaus Nuur Rhamadhan, a full-stack engineer working across IoT, software, AI, and computer vision.',
 } = Astro.props;
 ---
 
 <!doctype html>
-<html lang="id">
+<html lang="en">
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
@@ -21,14 +21,14 @@ const {
     <meta name="description" content={description} />
     <meta name="theme-color" content="#f4eee5" />
     <meta property="og:type" content="website" />
-    <meta property="og:locale" content="id_ID" />
+    <meta property="og:locale" content="en_US" />
     <meta property="og:site_name" content="Rhamaa" />
     <meta property="og:title" content={title} />
     <meta property="og:description" content={description} />
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
   </head>
   <body>
-    <a class="skip-link" href="#main-content">Lewati ke konten utama</a>
+    <a class="skip-link" href="#main-content">Skip to main content</a>
     <slot />
   </body>
 </html>
