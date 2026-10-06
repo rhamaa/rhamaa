@@ -1,0 +1,14 @@
+---
+import ReferenceArt from './ReferenceArt.astro';
+interface Props { timeline: { period: string; title: string; summary: string; projectIds: string[] }[]; projects: { id: string; title: string; repositoryUrl: string | null }[]; }
+const { timeline } = Astro.props;
+const artKinds = ['embedded', 'vision', 'software'] as const;
+---
+<ol class="timeline-list">
+  {timeline.map((phase, index) => <li class="timeline-item">
+    <p class="timeline-item__period">{phase.period.replace('–', ' – ')}</p>
+    <div class="timeline-item__rail"><span class="timeline-item__marker"></span></div>
+    <ReferenceArt kind={artKinds[index]} class="timeline-item__art" />
+    <h3>{phase.title}</h3><p class="timeline-item__summary">{phase.summary}</p>
+  </li>)}
+</ol>

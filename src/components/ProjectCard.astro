@@ -1,0 +1,41 @@
+---
+import ReferenceArt from './ReferenceArt.astro';
+import Icon from './Icon.astro';
+interface Project { id: string; title: string; year: number | string | null; status: string; summary: string; tags: string[]; repositoryUrl: string | null; }
+interface Props { project: Project; index: number; }
+const { project, index } = Astro.props;
+const artKind = project.id as 'captr-studio' | 'inara-ai' | 'runutin' | 'kirei-solar';
+const showStatus = project.id === 'captr-studio' || project.id === 'kirei-solar';
+---
+<article class={`project-card project-card--${project.id}`}>
+  <div class="project-card__copy">
+    <div class="project-card__number">0{index}<span></span></div>
+    <div class="project-card__title-row"><h3>{project.title}</h3>{showStatus && <span class="project-status">{project.status}</span>}</div>
+    <p class="project-card__summary">{project.summary}</p>
+    <ul class="tag-list" aria-label={`Bidang ${project.title}`}>{project.tags.map((tag) => <li>{tag}</li>)}</ul>
+    <button class="text-link" type="button" data-project-open={project.id} aria-haspopup="dialog">Lihat detail <Icon name="arrow" /></button>
+  </div>
+  <div class="project-card__art"><ReferenceArt kind={artKind} /></div>
+</article>
+<dialog class="project-dialog" id={`detail-${project.id}`} aria-labelledby={`detail-title-${project.id}`}>
+  <form method="dialog"><button class="dialog-close" aria-label="Tutup detail proyek"><Icon name="close" /></button></form>
+  <p class="eyebrow">PROYEK 0{index}{project.year && ` · ${project.year}`}</p>
+  <h2 id={`detail-title-${project.id}`}>{project.title}</h2><span class="project-status">{project.status}</span>
+  <p>{project.summary}</p><ul class="tag-list">{project.tags.map((tag) => <li>{tag}</li>)}</ul>
+  {project.repositoryUrl && <a class="button button--primary" href={project.repositoryUrl} target="_blank" rel="noreferrer">Lihat repositori <Icon name="external" /></a>}
+</dialog>
+<script>
+  document.querySelectorAll<HTMLButtonElement>('[data-project-open]').forEach((button) => {
+    button.addEventListener('click', () => {
+      const dialog = document.getElementById(`detail-${button.dataset.projectOpen}`) as HTMLDialogElement;
+      dialog.showModal();
+    });
+  });
+  document.querySelectorAll<HTMLDialogElement>('.project-dialog').forEach((dialog) => {
+    dialog.addEventListener('click', (event) => {
+      if (event.target !== dialog) return;
+      const rect = dialog.getBoundingClientRect();
+      if (event.clientX < rect.left || event.clientX > rect.right || event.clientY < rect.top || event.clientY > rect.bottom) dialog.close();
+    });
+  });
+</script>

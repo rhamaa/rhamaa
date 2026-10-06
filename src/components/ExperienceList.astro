@@ -1,0 +1,24 @@
+---
+import Icon from './Icon.astro';
+interface Experience { company: string; role: string; period?: string; summary: string; }
+interface Education { institution: string; program: string; displayProgram?: string; displayInstitution?: string; period?: string; summary: string; }
+interface Props { experience: Experience[]; education: Education[]; }
+const { experience, education } = Astro.props;
+---
+<div class="about-grid">
+  <section class="about-column" aria-labelledby="experience-title">
+    <div class="about-column__heading"><h3 id="experience-title">Pengalaman</h3><span></span></div>
+    <div class="experience-list">{experience.map((item) => <details class="experience-item">
+      <summary><span class="experience-item__node"></span><h4>{item.company}</h4><span class="experience-item__line"></span><Icon name="arrow" /></summary>
+      <div class="experience-item__detail"><p class="experience-item__role">{item.role}</p>{item.period && <p class="experience-item__period">{item.period}</p>}<p>{item.summary}</p></div>
+    </details>)}</div>
+  </section>
+  <section class="about-column about-column--education" aria-labelledby="education-title">
+    <div class="about-column__heading"><h3 id="education-title">Pendidikan</h3><span></span></div>
+    <ol class="education-list">{education.map((item, index) => <li class="education-item">
+      <span class="education-item__symbol"><Icon name={index === 0 ? 'university' : 'book'} /></span>
+      <div><h4>{item.displayProgram ?? item.program} <span>—</span> {item.displayInstitution ?? item.institution}</h4><p class="sr-only">{item.institution}. {item.program}. {item.period} {item.summary}</p></div>
+      <span class="education-item__line"></span>
+    </li>)}</ol>
+  </section>
+</div>

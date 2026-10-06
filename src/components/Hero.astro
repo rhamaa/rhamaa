@@ -1,0 +1,26 @@
+---
+import ReferenceArt from './ReferenceArt.astro';
+import Icon from './Icon.astro';
+interface Props {
+  profile: { name: string; headline: string; role: string; intro: string; location: string; alias: string };
+  linkedin: string;
+}
+const { profile, linkedin } = Astro.props;
+---
+<section class="hero" id="home" aria-labelledby="hero-title">
+  <div class="container hero__inner">
+    <div class="hero__copy">
+      <h1 id="hero-title">{profile.name.split(' ').slice(0, 2).join(' ')}<br />{profile.name.split(' ').slice(2).join(' ')}</h1>
+      <p class="hero__headline" aria-label={profile.headline}>Membangun solusi teknologi<br />dari perangkat hingga aplikasi</p>
+      <div class="hero__actions">
+        <a class="button button--primary" href="#projects">Lihat proyek <Icon name="arrow" /></a>
+        <a class="button button--quiet" href={linkedin} target="_blank" rel="noreferrer" aria-label="Buka profil LinkedIn Firdaus Nuur Rhamadhan">LinkedIn <Icon name="external" /></a>
+      </div>
+      <p class="sr-only">{profile.role}. {profile.intro} {profile.location}.</p>
+    </div>
+    <ReferenceArt kind="hero" class="hero__art" />
+    <img class="hero__tablet-art" src="/art/technology-standalone.webp" width="1536" height="1024" alt="Ilustrasi laptop, mikrokontroler, dan sensor yang saling terhubung" />
+    <ReferenceArt kind="mobile" class="hero__mobile-art" />
+    <ReferenceArt kind="mobile-orbit" class="hero__mobile-orbit" />
+  </div>
+</section>

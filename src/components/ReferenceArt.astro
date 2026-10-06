@@ -1,0 +1,28 @@
+---
+interface Props {
+  kind: 'hero' | 'mobile' | 'mobile-orbit' | 'captr-studio' | 'inara-ai' | 'runutin' | 'kirei-solar' | 'embedded' | 'vision' | 'software' | 'landscape';
+  class?: string;
+}
+const { kind, class: className = '' } = Astro.props;
+const sources = {
+  hero: { file: 'hero-reference.webp', box: '632 110 1040 816', width: 1672, height: 941 },
+  mobile: { file: 'mobile-reference.webp', box: '0 574 891 550', width: 891, height: 1766 },
+  'mobile-orbit': { file: 'mobile-reference.webp', box: '609 180 282 395', width: 891, height: 1766 },
+  'captr-studio': { file: 'projects-reference.webp', box: '434 299 311 289', width: 1536, height: 1024 },
+  'inara-ai': { file: 'projects-reference.webp', box: '1173 300 297 282', width: 1536, height: 1024 },
+  runutin: { file: 'projects-reference.webp', box: '448 636 291 285', width: 1536, height: 1024 },
+  'kirei-solar': { file: 'projects-reference.webp', box: '1174 635 294 286', width: 1536, height: 1024 },
+  embedded: { file: 'journey-reference.webp', box: '286 485 274 155', width: 1983, height: 793 },
+  vision: { file: 'journey-reference.webp', box: '863 485 253 155', width: 1983, height: 793 },
+  software: { file: 'journey-reference.webp', box: '1438 485 281 155', width: 1983, height: 793 },
+  landscape: { file: 'contact-reference.webp', box: '815 573 857 311', width: 1672, height: 941 },
+};
+const source = sources[kind];
+const [x, y, width, height] = source.box.split(' ').map(Number);
+---
+<svg class={`reference-art reference-art--${kind} ${className}`} viewBox={source.box} aria-hidden="true" focusable="false">
+  <defs><clipPath id={`clip-${kind}`}>
+    {kind === 'hero' || kind === 'mobile' ? <path d={kind === 'hero' ? 'M800 110H1672V941H632V635H800Z' : 'M410 574H891V1124H0V710H410Z'} /> : <rect x={x} y={y} width={width} height={height} />}
+  </clipPath></defs>
+  <image href={`/art/${source.file}`} width={source.width} height={source.height} clip-path={`url(#clip-${kind})`} />
+</svg>

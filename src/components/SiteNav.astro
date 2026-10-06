@@ -1,0 +1,25 @@
+<header class="site-header">
+  <div class="container site-header__inner">
+    <a class="wordmark" href="#home" aria-label="Rhamaa, kembali ke atas"><span class="wordmark__desktop">R<span class="wordmark__dot">.</span></span><span class="wordmark__mobile">RHAMAA</span></a>
+    <svg class="header-circuit" viewBox="0 0 1400 46" preserveAspectRatio="none" aria-hidden="true"><path d="M0 10h520l30 31h850"/><circle cx="205" cy="10" r="3"/></svg>
+    <nav class="site-nav" aria-label="Navigasi utama">
+      <a class="site-nav__home" href="#home">Beranda</a>
+      <a href="#projects">Proyek</a>
+      <a class="site-nav__timeline" href="#timeline">Perjalanan</a>
+      <a href="#about">Tentang</a>
+      <a href="#contact">Kontak</a>
+    </nav>
+  </div>
+</header>
+<script>
+  const links = [...document.querySelectorAll<HTMLAnchorElement>('.site-nav a')];
+  const observer = new IntersectionObserver((entries) => {
+    const active = entries.find((entry) => entry.isIntersecting);
+    if (!active) return;
+    links.forEach((link) => {
+      if (link.hash === `#${active.target.id}`) link.setAttribute('aria-current', 'location');
+      else link.removeAttribute('aria-current');
+    });
+  }, { rootMargin: '-15% 0px -60% 0px' });
+  document.querySelectorAll<HTMLElement>('main section[id]').forEach((section) => observer.observe(section));
+</script>

@@ -1,0 +1,39 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import SiteNav from '../components/SiteNav.astro';
+import Hero from '../components/Hero.astro';
+import ProjectCard from '../components/ProjectCard.astro';
+import ProjectTimeline from '../components/ProjectTimeline.astro';
+import ExperienceList from '../components/ExperienceList.astro';
+import ContactBlock from '../components/ContactBlock.astro';
+import portfolio from '../data/portfolio.json';
+const featuredProjects = portfolio.projects.filter((project) => project.featured);
+---
+<BaseLayout title="Firdaus Nuur Rhamadhan — Rhamaa | IoT, AI & Software" description="Portofolio Firdaus Nuur Rhamadhan (Rhamaa): proyek dan pengalaman di bidang IoT, software, AI, dan computer vision.">
+  <SiteNav />
+  <main id="main-content">
+    <Hero profile={portfolio.profile} linkedin={portfolio.contact.linkedin} />
+    <section class="projects-section container" id="projects" aria-labelledby="projects-title">
+      <div class="projects-heading">
+        <div><p class="section-index"><span></span>04</p><h2 id="projects-title">Proyek pilihan</h2><p class="section-intro">Beberapa proyek yang sedang saya kerjakan dan eksplorasi,<br class="desktop-break" /> untuk merancang solusi yang lebih bermakna dan berdampak.</p></div>
+        <p class="projects-heading__aside">Dari ide, riset, hingga implementasi.<br />Setiap proyek adalah proses belajar<br />yang terus berlanjut.</p>
+      </div>
+      <div class="projects-grid">{featuredProjects.map((project, index) => <ProjectCard project={project} index={index + 1} />)}</div>
+      <div class="section-signature"><span></span><p>IDE <b>—</b> RANCANGAN <b>—</b> IMPLEMENTASI <b>—</b> DAMPAK</p></div>
+    </section>
+    <section class="timeline-section" id="timeline" aria-labelledby="timeline-title">
+      <svg class="journey-lines" viewBox="0 0 550 250" aria-hidden="true"><path d="M0 210c70 0 95-20 145-20 90 0 85-77 170-72 90 4 77-150 180-87 25 15 40 30 55 33M70 210c100-15 90-40 180-47 80-7 110-132 180-83 40 28 60 62 120 55M250 210c85-4 91 21 155 20 79-2 99 18 145 20"/><circle cx="324" cy="99" r="11"/></svg>
+      <div class="container timeline-section__inner">
+        <p class="eyebrow eyebrow--teal">Perjalanan <span></span></p><h2 id="timeline-title">Perjalanan proyek</h2>
+        <p class="section-intro timeline-section__intro">Dari integrasi perangkat hingga pengembangan prototipe berbasis<br class="desktop-break" /> sensor, visi komputer, dan AI, menuju sistem monitoring dan produk<br class="desktop-break" /> perangkat lunak yang terus dikembangkan dan dieksplorasi.</p>
+        <ProjectTimeline timeline={portfolio.timeline} projects={portfolio.projects} />
+      </div>
+    </section>
+    <section class="about-section container" id="about" aria-labelledby="about-title">
+      <div class="about-heading"><div><p class="eyebrow">Pengalaman & pendidikan <span class="node-line"></span></p><h2 id="about-title">Pengalaman & pendidikan</h2></div><p class="section-intro">Beberapa ruang belajar dan kolaborasi yang membentuk<br class="desktop-break" /> cara saya melihat masalah, membangun solusi,<br class="desktop-break" /> dan bertumbuh hingga hari ini.</p></div>
+      <ExperienceList experience={portfolio.experience} education={portfolio.education} />
+    </section>
+    <ContactBlock linkedin={portfolio.contact.linkedin} />
+  </main>
+  <footer class="site-footer"><div class="container site-footer__inner"><a class="footer-wordmark" href="#home">RHAMAA</a><p>TEKNOLOGI UNTUK MANUSIA YANG LEBIH BAIK</p><a class="footer-top" href="#home">DIBANGUN DENGAN RASA INGIN TAHU <span class="node-line"></span></a></div></footer>
+</BaseLayout>
