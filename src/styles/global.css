@@ -850,7 +850,8 @@ h2 {
 
 .contact-section {
   border-block:1px solid var(--color-line);
-  overflow:hidden
+  overflow:hidden;
+  perspective:1200px;
 }
 
 .contact-section__inner {
@@ -1654,3 +1655,43 @@ h2 {
   .project-status { color: #85540e; }
 }
 
+/* Antigravity Design System & Spatial Layers */
+.reference-art {
+  will-change: transform;
+  transform-style: preserve-3d;
+}
+
+.sub-svg {
+  overflow: visible;
+}
+
+.interactive-node {
+  cursor: pointer;
+}
+
+.hero__art, .contact-section__art, .journey-lines {
+  will-change: transform;
+}
+
+.art-layer {
+  transform-origin: center center;
+  will-change: transform;
+}
+
+.art-floating-card {
+  filter: drop-shadow(0 18px 28px rgba(12, 25, 27, 0.08));
+  transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.art-ambient-glow {
+  transform-origin: center center;
+  pointer-events: none;
+}
+
+.art-orbit-node {
+  transform-origin: center center;
+}
+
+.project-card:hover .art-floating-card {
+  transform: translateY(-4px) scale(1.01);
+}

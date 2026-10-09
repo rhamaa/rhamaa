@@ -4,12 +4,14 @@ import test from 'node:test';
 
 const readPage = () => readFile(new URL('../dist/index.html', import.meta.url), 'utf8');
 
-test('every featured project has an accessible detail view, including Runutin without a public repository', async () => {
+test('every featured project has an accessible detail view and repository links where available', async () => {
   const html = await readPage();
-  for (const id of ['captr-studio', 'inara-ai', 'runutin', 'kirei-solar']) {
+  for (const id of ['captr-studio', 'inara-ai', 'rhamaa-cli', 'rhamaa-cms', 'runutin', 'kirei-solar']) {
     assert.match(html, new RegExp(`data-project-open="${id}"`));
     assert.match(html, new RegExp(`<dialog[^>]*id="detail-${id}"`));
   }
+  assert.ok(html.includes('https://github.com/RhamaaCMS/RhamaaCLI'));
+  assert.ok(html.includes('https://github.com/RhamaaCMS/RhamaaCMS'));
   const runutin = html.match(/<dialog[^>]*id="detail-runutin"[\s\S]*?<\/dialog>/)?.[0];
   assert.ok(runutin);
   assert.doesNotMatch(runutin, /href="https:/);

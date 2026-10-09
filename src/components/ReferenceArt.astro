@@ -1,6 +1,6 @@
 ---
 interface Props {
-  kind: 'hero' | 'mobile' | 'mobile-orbit' | 'captr-studio' | 'inara-ai' | 'runutin' | 'kirei-solar' | 'embedded' | 'vision' | 'software' | 'landscape';
+  kind: 'hero' | 'mobile' | 'mobile-orbit' | 'captr-studio' | 'inara-ai' | 'runutin' | 'kirei-solar' | 'rhamaa-cli' | 'rhamaa-cms' | 'embedded' | 'vision' | 'software' | 'landscape';
   class?: string;
 }
 const { kind, class: className = '' } = Astro.props;
@@ -12,6 +12,8 @@ const sources = {
   'inara-ai': { file: 'projects-reference.webp', box: '1173 300 297 282', width: 1536, height: 1024 },
   runutin: { file: 'projects-reference.webp', box: '448 636 291 285', width: 1536, height: 1024 },
   'kirei-solar': { file: 'projects-reference.webp', box: '1174 635 294 286', width: 1536, height: 1024 },
+  'rhamaa-cli': { file: '', box: '0 0 320 270', width: 320, height: 270 },
+  'rhamaa-cms': { file: '', box: '0 0 320 270', width: 320, height: 270 },
   embedded: { file: 'journey-reference.webp', box: '286 485 274 155', width: 1983, height: 793 },
   vision: { file: 'journey-reference.webp', box: '863 485 253 155', width: 1983, height: 793 },
   software: { file: 'journey-reference.webp', box: '1438 485 281 155', width: 1983, height: 793 },
@@ -24,5 +26,100 @@ const [x, y, width, height] = source.box.split(' ').map(Number);
   <defs><clipPath id={`clip-${kind}`}>
     {kind === 'hero' || kind === 'mobile' ? <path d={kind === 'hero' ? 'M800 110H1672V941H632V635H800Z' : 'M410 574H891V1124H0V710H410Z'} /> : <rect x={x} y={y} width={width} height={height} />}
   </clipPath></defs>
-  <image href={`/art/${source.file}`} width={source.width} height={source.height} clip-path={`url(#clip-${kind})`} />
+  {kind === 'rhamaa-cli' ? <g class="art-layer art-layer--code" stroke-linecap="round" stroke-linejoin="round">
+    <circle class="art-ambient-glow" cx="236" cy="47" r="38" fill="#ebb047" opacity=".76" />
+    <path d="M18 232H300M31 27v201M286 61v164" fill="none" stroke="#8d9991" stroke-width="1" />
+    <rect class="art-floating-card" x="42" y="40" width="222" height="150" rx="10" fill="#f8f4eb" stroke="#172724" stroke-width="2" />
+    <path d="M42 68h222" fill="none" stroke="#172724" stroke-width="1.5" />
+    <circle cx="57" cy="54" r="3.5" fill="#ebb047" /><circle cx="70" cy="54" r="3.5" fill="#16756a" /><circle cx="83" cy="54" r="3.5" fill="#172724" />
+    <rect x="52" y="80" width="42" height="99" rx="3" fill="#18302d" />
+    <path class="art-pulse" d="M60 93h18m-18 13h24m-24 13h15m-15 13h22m-22 13h16m-16 13h23" fill="none" stroke="#dce0d8" stroke-width="2" />
+    <path class="art-code-flow" d="M108 93h87m-87 15h58m-58 16h103m-103 15h70m-70 16h92m-92 15h48" fill="none" stroke="#16756a" stroke-width="3" />
+    <path d="M108 93h16m-16 31h18m-18 31h22" fill="none" stroke="#ebb047" stroke-width="3" />
+    <path d="m102 209 29-13h89l29 13v14H102Z" fill="#dce0d8" stroke="#172724" stroke-width="1.5" />
+    <circle cx="115" cy="217" r="3" fill="#16756a" /><circle cx="131" cy="217" r="3" fill="#ebb047" /><circle cx="147" cy="217" r="3" fill="#172724" />
+    <path d="M169 217h57" fill="none" stroke="#778985" stroke-width="2" />
+    <circle class="art-orbit-node" cx="25" cy="116" r="3" fill="#16756a" /><circle class="art-orbit-node" cx="285" cy="152" r="3" fill="#16756a" />
+  </g> : kind === 'rhamaa-cms' ? <g class="art-layer art-layer--cms" stroke-linecap="round" stroke-linejoin="round">
+    <circle class="art-ambient-glow" cx="242" cy="211" r="42" fill="#197a6d" opacity=".8" /><circle class="art-ambient-glow" cx="72" cy="45" r="22" fill="#ebb047" opacity=".76" />
+    <path d="M17 239h286M28 24v204m264-185v164" fill="none" stroke="#8d9991" stroke-width="1" />
+    <rect class="art-floating-card" x="43" y="37" width="233" height="178" rx="11" fill="#f8f4eb" stroke="#172724" stroke-width="2" />
+    <path d="M43 67h233" fill="none" stroke="#172724" stroke-width="1.5" />
+    <circle cx="58" cy="52" r="3.5" fill="#ebb047" /><circle cx="71" cy="52" r="3.5" fill="#16756a" /><circle cx="84" cy="52" r="3.5" fill="#172724" />
+    <rect x="55" y="79" width="52" height="124" rx="4" fill="#e4e6dc" />
+    <circle cx="67" cy="92" r="4" fill="#16756a" /><path d="M78 92h17m-28 17h29m-29 13h23m-23 13h29m-29 13h20" fill="none" stroke="#778985" stroke-width="2" />
+    <rect class="art-floating-subcard" x="119" y="80" width="143" height="52" rx="4" fill="#e8e4d9" />
+    <path class="art-wave" d="M132 117c12-22 21 9 34-8 10-13 20 8 32-7 11-13 18 2 28-9 10-11 14 0 23-8" fill="none" stroke="#16756a" stroke-width="3" />
+    <rect x="119" y="141" width="67" height="62" rx="4" fill="#dce0d8" /><rect x="194" y="141" width="68" height="62" rx="4" fill="#ece7dc" />
+    <path d="M129 152h42m-42 9h32m-32 9h38m-38 17h28m35-35h45m-45 9h38m-38 9h45m-45 9h30" fill="none" stroke="#778985" stroke-width="2" />
+    <path d="M27 82h13m235 100h19" fill="none" stroke="#172724" stroke-width="1.5" /><circle class="art-orbit-node" cx="27" cy="82" r="4" fill="#16756a" /><circle class="art-orbit-node" cx="294" cy="182" r="4" fill="#ebb047" />
+  </g> : kind === 'captr-studio' ? <g class="art-layer art-layer--captr" stroke-linecap="round" stroke-linejoin="round">
+    <circle class="art-ambient-glow" cx="590" cy="440" r="100" fill="#ebb047" opacity=".35" />
+    <rect class="art-floating-card" x="460" y="325" width="260" height="190" rx="14" fill="#1b2e2b" stroke="#365e58" stroke-width="2" />
+    <rect x="475" y="345" width="230" height="110" rx="8" fill="#101e1c" stroke="#25423e" stroke-width="1.5" />
+    <circle class="art-pulse" cx="505" cy="365" r="5" fill="#f87171" />
+    <path d="M525 365h160" fill="none" stroke="#3d635c" stroke-width="2" />
+    <polygon points="575,390 605,405 575,420" fill="#ebb047" />
+    <rect x="475" y="475" width="140" height="22" rx="4" fill="#25423e" />
+    <rect class="art-pulse" x="635" y="475" width="70" height="22" rx="4" fill="#16756a" />
+    <circle class="art-orbit-node" cx="445" cy="380" r="6" fill="#ebb047" />
+    <circle class="art-orbit-node" cx="735" cy="480" r="5" fill="#16756a" />
+  </g> : kind === 'inara-ai' ? <g class="art-layer art-layer--inara" stroke-linecap="round" stroke-linejoin="round">
+    <circle class="art-ambient-glow" cx="1320" cy="440" r="110" fill="#197a6d" opacity=".35" />
+    <rect class="art-floating-card" x="1200" y="325" width="245" height="210" rx="14" fill="#f8f4eb" stroke="#172724" stroke-width="2" />
+    <rect x="1220" y="350" width="205" height="42" rx="8" fill="#e4e6dc" stroke="#9bb1a8" stroke-width="1" />
+    <circle cx="1238" cy="371" r="5" fill="#16756a" />
+    <path d="M1255 371h150" fill="none" stroke="#778985" stroke-width="2.5" />
+    <g class="art-pulse">
+      <circle cx="1260" cy="440" r="14" fill="#16756a" opacity=".18" /><circle cx="1260" cy="440" r="6" fill="#16756a" />
+      <circle cx="1325" cy="415" r="16" fill="#ebb047" opacity=".22" /><circle cx="1325" cy="415" r="8" fill="#ebb047" />
+      <circle cx="1390" cy="445" r="14" fill="#16756a" opacity=".18" /><circle cx="1390" cy="445" r="6" fill="#16756a" />
+      <path class="art-wave" d="M1260 440L1325 415L1390 445" fill="none" stroke="#172724" stroke-width="2" />
+    </g>
+    <rect x="1220" y="480" width="205" height="35" rx="6" fill="#e8e4d9" />
+    <path d="M1235 497h130" fill="none" stroke="#16756a" stroke-width="2" />
+    <circle class="art-orbit-node" cx="1185" cy="430" r="5" fill="#ebb047" />
+  </g> : kind === 'landscape' ? <g class="landscape-art-group" stroke-linecap="round" stroke-linejoin="round">
+    <!-- Ambient Solar Orb (GSAP levitation & pulse) -->
+    <g class="landscape-sun-orb">
+      <circle cx="1275" cy="735" r="58" fill="#e4af4d" />
+      <circle class="landscape-sun-glow" cx="1275" cy="735" r="66" fill="#e4af4d" opacity=".3" />
+    </g>
+    <!-- Base Landscape Image (Trees, Hills & Mountains) -->
+    <image href={`/art/${source.file}`} width={source.width} height={source.height} clip-path={`url(#clip-${kind})`} />
+    <!-- Floating Cyber Geometric Lines, Nodes & IoT Data Grids -->
+    <g class="landscape-circuit-group" stroke="#172724">
+      <!-- Dot Matrix Grid Left -->
+      <g class="landscape-dot-grid" fill="#172724" opacity=".4">
+        <circle cx="950" cy="730" r="1.5" /><circle cx="970" cy="730" r="1.5" /><circle cx="990" cy="730" r="1.5" /><circle cx="1010" cy="730" r="1.5" />
+        <circle cx="950" cy="750" r="1.5" /><circle cx="970" cy="750" r="1.5" /><circle cx="990" cy="750" r="1.5" /><circle cx="1010" cy="750" r="1.5" />
+        <circle cx="950" cy="770" r="1.5" /><circle cx="970" cy="770" r="1.5" /><circle cx="990" cy="770" r="1.5" /><circle cx="1010" cy="770" r="1.5" />
+      </g>
+      <!-- Dot Matrix Grid Center -->
+      <g class="landscape-dot-grid" fill="#172724" opacity=".35">
+        <circle cx="1150" cy="615" r="1.5" /><circle cx="1170" cy="615" r="1.5" /><circle cx="1190" cy="615" r="1.5" />
+        <circle cx="1150" cy="635" r="1.5" /><circle cx="1170" cy="635" r="1.5" /><circle cx="1190" cy="635" r="1.5" />
+        <circle cx="1150" cy="655" r="1.5" /><circle cx="1170" cy="655" r="1.5" /><circle cx="1190" cy="655" r="1.5" />
+      </g>
+      <!-- Circuit Path 1 (Left Tall Node & Drop) -->
+      <path class="landscape-circuit-line" d="M980 635h52v122" fill="none" stroke="#253835" stroke-width="1.2" />
+      <circle class="landscape-tech-node" cx="980" cy="635" r="3.5" fill="#253835" />
+      <circle class="landscape-gold-node" cx="1032" cy="757" r="4.5" fill="#ebb047" stroke="#172724" stroke-width="1" />
+      <!-- Circuit Path 2 (Angular Beam to Sun) -->
+      <path class="landscape-circuit-line" d="M1100 618v90l60 60" fill="none" stroke="#687b77" stroke-width="1" stroke-dasharray="3 3" />
+      <rect class="landscape-gold-node" x="1096" y="614" width="8" height="8" fill="#ebb047" />
+      <circle class="landscape-tech-node" cx="1100" cy="668" r="3" fill="#253835" />
+      <circle class="landscape-gold-node" cx="1100" cy="708" r="4.5" fill="#ebb047" />
+      <path class="landscape-circuit-line" d="M1078 720l22-12 70 70" fill="none" stroke="#253835" stroke-width="1.2" />
+      <!-- Circuit Path 3 (Right High Altitude Grid) -->
+      <path class="landscape-circuit-line" d="M1350 628h30m20 0h40" fill="none" stroke="#687b77" stroke-width="1.2" />
+      <circle class="landscape-tech-node" cx="1350" cy="628" r="3" fill="#253835" />
+      <circle class="landscape-gold-node" cx="1380" cy="628" r="4" fill="#ebb047" />
+      <path class="landscape-circuit-line" d="M1418 590v85m38-50v65" fill="none" stroke="#253835" stroke-width="1" />
+      <path class="landscape-circuit-line" d="M1418 642h38" fill="none" stroke="#253835" stroke-width="1" />
+      <rect class="landscape-gold-node" x="1436" y="638" width="7" height="7" fill="#ebb047" />
+      <path class="landscape-circuit-line" d="M1500 628v45" fill="none" stroke="#253835" stroke-width="1" />
+      <circle class="landscape-gold-node" cx="1500" cy="650" r="3.5" fill="#ebb047" />
+    </g>
+  </g> : <image href={`/art/${source.file}`} width={source.width} height={source.height} clip-path={`url(#clip-${kind})`} />}
 </svg>

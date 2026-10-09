@@ -16,6 +16,8 @@ Based in Bandung, Indonesia.
 
 - **[Captr Studio](https://github.com/rhamaa/Captr-Studio)** — a desktop app for screen recording and video editing, currently in development.
 - **[iNara-AI](https://github.com/rhamaa/iNara-AI)** — an early RAG/LLM campus information assistant prototype focused on local knowledge.
+- **[RhamaaCLI](https://github.com/RhamaaCMS/RhamaaCLI)** — a command-line tool for creating Wagtail projects and installing ready-made apps.
+- **[RhamaaCMS](https://github.com/RhamaaCMS/RhamaaCMS)** — production-ready Wagtail and Django starter templates for content sites, IoT dashboards, and React applications.
 - **[Kirei Solar Panel Monitoring](https://github.com/rhamaa/Kirei-SolarPanelMonitoringSystem)** — an IoT solar-monitoring prototype; firmware telemetry currently uses simulated data.
 - **Runutin** — a modular technology-learning initiative connecting hands-on learning with IoT exploration.
 

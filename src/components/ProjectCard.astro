@@ -4,7 +4,7 @@ import Icon from './Icon.astro';
 interface Project { id: string; title: string; year: number | string | null; status: string; summary: string; tags: string[]; repositoryUrl: string | null; }
 interface Props { project: Project; index: number; }
 const { project, index } = Astro.props;
-const artKind = project.id as 'captr-studio' | 'inara-ai' | 'runutin' | 'kirei-solar';
+const artKind = project.id as 'captr-studio' | 'inara-ai' | 'runutin' | 'kirei-solar' | 'rhamaa-cli' | 'rhamaa-cms';
 const showStatus = project.id === 'captr-studio' || project.id === 'kirei-solar';
 ---
 <article class={`project-card project-card--${project.id}`}>

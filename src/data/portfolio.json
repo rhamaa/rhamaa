@@ -85,6 +85,26 @@
       "featured": true
     },
     {
+      "id": "rhamaa-cli",
+      "title": "RhamaaCLI",
+      "year": null,
+      "status": "Open-source developer tool",
+      "summary": "A command-line toolkit for creating Wagtail projects and installing prebuilt apps with automatic Django configuration.",
+      "tags": ["Python", "Wagtail", "Developer tools"],
+      "repositoryUrl": "https://github.com/RhamaaCMS/RhamaaCLI",
+      "featured": true
+    },
+    {
+      "id": "rhamaa-cms",
+      "title": "RhamaaCMS",
+      "year": null,
+      "status": "Production-ready templates",
+      "summary": "A collection of Wagtail and Django starter templates for content sites, real-time IoT dashboards, and React-powered apps.",
+      "tags": ["Wagtail", "Django", "React"],
+      "repositoryUrl": "https://github.com/RhamaaCMS/RhamaaCMS",
+      "featured": true
+    },
+    {
       "id": "runutin",
       "title": "Runutin",
       "year": null,

@@ -1,0 +1,39 @@
+---
+interface Props {
+  class?: string;
+  id?: string;
+}
+const { class: className = '', id = 'sub-svg-sun' } = Astro.props;
+---
+<svg
+  id={id}
+  class={`sub-svg sub-svg--sun ${className}`}
+  viewBox="0 0 1024 409"
+  width="1024"
+  height="409"
+  x="0"
+  y="0"
+  overflow="visible"
+  xmlns="http://www.w3.org/2000/svg"
+  aria-hidden="true"
+  focusable="false"
+>
+  <defs>
+    <filter id="solar-corona-glow" x="-40%" y="-40%" width="180%" height="180%">
+      <feGaussianBlur stdDeviation="15" result="blur" />
+      <feComposite in="SourceGraphic" in2="blur" operator="over" />
+    </filter>
+    <radialGradient id="sun-gradient" cx="50%" cy="50%" r="50%">
+      <stop offset="0%" stop-color="#ffd56b" />
+      <stop offset="70%" stop-color="#e7ac43" />
+      <stop offset="100%" stop-color="#c98a24" />
+    </radialGradient>
+  </defs>
+  <g class="art-layer art-layer--sun" style="transform-origin: 547px 156px;">
+    <!-- Warm Outer Corona Atmosphere -->
+    <circle class="sun-corona" cx="547" cy="156" r="78" fill="#e7ac43" opacity="0.25" filter="url(#solar-corona-glow)" />
+    <circle class="sun-halo" cx="547" cy="156" r="67" fill="#e7ac43" opacity="0.45" />
+    <!-- Core Golden Solar Orb -->
+    <circle class="sun-core" cx="547" cy="156" r="60.3" fill="url(#sun-gradient)" />
+  </g>
+</svg>

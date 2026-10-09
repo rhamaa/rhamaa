@@ -15,7 +15,7 @@ const featuredProjects = portfolio.projects.filter((project) => project.featured
     <Hero profile={portfolio.profile} linkedin={portfolio.contact.linkedin} />
     <section class="projects-section container" id="projects" aria-labelledby="projects-title">
       <div class="projects-heading">
-        <div><p class="section-index"><span></span>04</p><h2 id="projects-title">Selected projects</h2><p class="section-intro">A few projects I'm building and exploring as I work<br class="desktop-break" /> toward more useful and meaningful solutions.</p></div>
+        <div><p class="section-index"><span></span>06</p><h2 id="projects-title">Selected projects</h2><p class="section-intro">A few projects I'm building and exploring as I work<br class="desktop-break" /> toward more useful and meaningful solutions.</p></div>
         <p class="projects-heading__aside">From idea and research to implementation.<br />Every project is a chance to learn<br />and keep moving forward.</p>
       </div>
       <div class="projects-grid">{featuredProjects.map((project, index) => <ProjectCard project={project} index={index + 1} />)}</div>

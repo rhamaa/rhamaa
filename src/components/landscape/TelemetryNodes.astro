@@ -1,0 +1,57 @@
+---
+interface Props {
+  class?: string;
+  id?: string;
+}
+const { class: className = '', id = 'sub-svg-telemetry-nodes' } = Astro.props;
+---
+<svg
+  id={id}
+  class={`sub-svg sub-svg--telemetry-nodes ${className}`}
+  viewBox="0 0 1024 409"
+  width="1024"
+  height="409"
+  x="0"
+  y="0"
+  overflow="visible"
+  xmlns="http://www.w3.org/2000/svg"
+  aria-hidden="true"
+  focusable="false"
+>
+  <g class="art-layer art-layer--telemetry-nodes">
+    <!-- Node A: Left High Terminal -->
+    <g class="interactive-node" data-id="node-a" style="transform-origin: 334px 62px;">
+      <rect x="330" y="58" width="9" height="9" fill="#e7ac43" stroke="#172724" stroke-width="1.2" rx="1.5" />
+      <circle cx="334.5" cy="62.5" r="2" fill="#172724" />
+    </g>
+
+    <!-- Node B: Left Circuit Mid Beacon -->
+    <g class="interactive-node" data-id="node-b" style="transform-origin: 334px 201px;">
+      <circle class="beacon-pulse" cx="334.5" cy="201" r="10" fill="none" stroke="#e7ac43" stroke-width="1" opacity="0.6" />
+      <circle cx="334.5" cy="201" r="5" fill="#e7ac43" stroke="#172724" stroke-width="1.2" />
+    </g>
+
+    <!-- Node C: Left Vertical Anchor Drop -->
+    <g class="interactive-node" data-id="node-c" style="transform-origin: 272px 245px;">
+      <circle class="beacon-pulse" cx="272" cy="245" r="8" fill="none" stroke="#e7ac43" stroke-width="1" opacity="0.5" />
+      <circle cx="272" cy="245" r="4.5" fill="#e7ac43" stroke="#172724" stroke-width="1.2" />
+    </g>
+
+    <!-- Node D: Right Mountain Crest Sensor -->
+    <g class="interactive-node" data-id="node-d" style="transform-origin: 670px 115px;">
+      <circle class="beacon-pulse" cx="670" cy="115" r="8" fill="none" stroke="#e7ac43" stroke-width="1" opacity="0.6" />
+      <circle cx="670" cy="115" r="4.5" fill="#e7ac43" stroke="#172724" stroke-width="1.2" />
+    </g>
+
+    <!-- Node E: Right High Matrix Sensor -->
+    <g class="interactive-node" data-id="node-e" style="transform-origin: 785px 99px;">
+      <rect x="782" y="96" width="7" height="7" fill="#e7ac43" stroke="#172724" stroke-width="1" rx="1" />
+    </g>
+
+    <!-- Node F: Far Right Perimeter Node -->
+    <g class="interactive-node" data-id="node-f" style="transform-origin: 868px 145px;">
+      <circle class="beacon-pulse" cx="868" cy="145" r="8" fill="none" stroke="#e7ac43" stroke-width="1" opacity="0.6" />
+      <circle cx="868" cy="145" r="4.5" fill="#e7ac43" stroke="#172724" stroke-width="1.2" />
+    </g>
+  </g>
+</svg>

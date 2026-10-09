@@ -27,8 +27,18 @@ test('project_links_are_verified_https_urls', async () => {
     const repository = new URL(project.repositoryUrl);
     assert.equal(repository.protocol, 'https:', `${project.title} must use HTTPS`);
     assert.equal(repository.hostname, 'github.com', `${project.title} must link to GitHub`);
-    assert.equal(repository.pathname.split('/')[1], 'rhamaa', `${project.title} must use the verified owner`);
+    assert.ok(['rhamaa', 'RhamaaCMS'].includes(repository.pathname.split('/')[1]), `${project.title} must use a verified owner`);
   }
+});
+
+test('RhamaaCLI and RhamaaCMS are featured with their canonical public repositories', async () => {
+  const portfolio = await loadPortfolio();
+  const projects = new Map(portfolio.projects.map((project) => [project.id, project]));
+
+  assert.equal(projects.get('rhamaa-cli')?.repositoryUrl, 'https://github.com/RhamaaCMS/RhamaaCLI');
+  assert.equal(projects.get('rhamaa-cli')?.featured, true);
+  assert.equal(projects.get('rhamaa-cms')?.repositoryUrl, 'https://github.com/RhamaaCMS/RhamaaCMS');
+  assert.equal(projects.get('rhamaa-cms')?.featured, true);
 });
 
 test('project_status_labels_remain_visible', async () => {
